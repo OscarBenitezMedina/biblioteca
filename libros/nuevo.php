@@ -11,7 +11,7 @@ session_start();
 
     $blade = new BladeOne($views, $cache,BladeOne::MODE_AUTO);
 
-// Comprobamso si recibimos datos por POST
+// Comprobamos si recibimos datos por POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recogemos variables
     $titulo = isset($_REQUEST['titulo']) ? $_REQUEST['titulo'] : null;
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Redireccionamos a Leer
     header('Location: index.php');
 }
-    $miConsulta = $miPDO->prepare('SELECT * FROM categorias;');
+    $miConsulta = $miPDO->prepare('SELECT * FROM libros L LEFT JOIN categorias C on L.categoria = C.codigo_categoria;');
     $miConsulta->execute();
     $categorias = $miConsulta->fetchAll();
     $miConsulta = $miPDO->prepare('SELECT * FROM autores;');
@@ -50,6 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     echo $blade->run("libros.nuevo", [
-
+        'categorias' => $categorias
     ]);
 ?>
