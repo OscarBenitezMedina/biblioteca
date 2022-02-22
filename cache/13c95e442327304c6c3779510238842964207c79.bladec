@@ -12,7 +12,7 @@
  <select name="autor" class="form-select">
  <option>Seleccione autor</option>
  <?php foreach ($autores as $autor){ ?>
- <option value="<?= $autor['nombre']; ?>"> <?= $autor['nombre']; ?></option>
+ <option value="<?= $autor['codigo_autor']; ?>"> <?= $autor['nombre']; ?></option>
  <?php } ?>
  </select>
  </p>
@@ -21,7 +21,7 @@
  <select name="categoria" class="form-select">
  <option>Seleccione categoría</option>
  <?php foreach ($categorias as $categoria){ ?>
- <option value="<?= $categoria['nombre']; ?>"> <?= $categoria['nombre']; ?></option>
+ <option value="<?= $categoria['codigo_categoria']; ?>"> <?= $categoria['nombre']; ?></option>
  <?php } ?>
  </select>
  </p>
@@ -30,7 +30,7 @@
  <select name="editorial" class="form-select">
  <option>Seleccione editorial</option>
  <?php foreach ($editoriales as $editorial){ ?>
- <option value="<?= $editorial['nombre']; ?>"> <?= $editorial['nombre']; ?></option>
+ <option value="<?= $editorial['codigo_editorial']; ?>"> <?= $editorial['nombre']; ?></option>
  <?php } ?>
  </select>
  </p>

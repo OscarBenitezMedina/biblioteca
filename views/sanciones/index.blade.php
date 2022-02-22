@@ -1,6 +1,7 @@
 @extends('layouts.plantilla')
 @section('content')
-<h1>Libros</h1>
+<!-- Borrar?? -->
+<h1>Sanciones</h1>
         <?php if (isset($_SESSION["mensaje"])) { ?>
             <div class="alert alert-warning alert-dsmissible fade show" role="alert" aria-label="close">
                 <?= $_SESSION["mensaje"] ?>
@@ -22,28 +23,26 @@
         <table class="table table-striped table-bordered">
             <tr>
                 <th>Código</th>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Editorial</th>
-                <th>Categoría</th>
-                <th>¿Disponible?</th>
+                <th>Usuario</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de finalización</th>
+                <th>Motivo</th>
                 <th colspan="2">Opciones</th>
             </tr>
-            <?php foreach ($libros as $clave => $valor): ?>
+            <?php foreach ($sanciones as $clave => $valor): ?>
                 <tr>
-                    <td><?= $valor['codigo']; ?></td>
-                    <td><?= $valor['titulo']; ?></td>
-                    <td><?= $valor['autor']; ?></td>
-                    <td><?= $valor['editorial']; ?></td>               
-                    <td><?= $valor['categoria']; ?></td>
-                    <td><?= $valor['disponible'] ? 'Si' : 'No'; ?></td>
+                    <td><?= $valor['id']; ?></td>
+                    <td><?= $valor['id_usuario']; ?></td>
+                    <td><?= $valor['fecha_inicio']; ?></td>
+                    <td><?= $valor['fecha_fin']; ?></td>               
+                    <td><?= $valor['motivo']; ?></td>
                     <!-- Se utilizará más adelante para indicar si se quiere modificar o eliminar el registro -->
                     <td><a  class="btn btn-primary btn-sm" href="modificar.php?codigo=<?= $valor['codigo'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a  class="btn btn-danger btn-sm" return confirm('¿ Desea borrar el libro ?')" href="borrar.php?codigo=<?= $valor['codigo'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
             <?php endforeach; ?>
         </table>
-        <?= "Numero de registros: ".count($libros) ?> <br>
+        <?= "Numero de registros: ".count($sanciones) ?> <br>
         <a  class="btn btn-primary btn-sm" href="../index.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         </div>
 @endsection

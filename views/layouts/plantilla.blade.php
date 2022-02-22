@@ -13,7 +13,7 @@
 <body>
 
 <div class="d-flex">
-    <div class="container">
+    <div class="container m-5">
         @yield('content')
     </div>
 </div>

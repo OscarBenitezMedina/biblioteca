@@ -1,6 +1,6 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection('content'); ?>
-<h1>Libros</h1>
+<h1>Usuarios</h1>
  <?php if (isset($_SESSION["mensaje"])) { ?>
  <div class="alert alert-warning alert-dsmissible fade show" role="alert" aria-label="close">
  <?= $_SESSION["mensaje"] ?>
@@ -22,28 +22,32 @@
  <table class="table table-striped table-bordered">
  <tr>
  <th>Código</th>
- <th>Título</th>
- <th>Autor</th>
- <th>Editorial</th>
- <th>Categoría</th>
- <th>¿Disponible?</th>
+ <th>Nombre de usuario</th>
+ <th>Nombre</th>
+ <th>Apellidos</th>
+ <th>Contraseña</th>
+ <th>Email</th>
+ <th>Perfil</th>
+ <th>Activo</th>
  <th colspan="2">Opciones</th>
  </tr>
- <?php foreach ($libros as $clave => $valor): ?>
+ <?php foreach ($usuarios as $clave => $valor): ?>
  <tr>
- <td><?= $valor['codigo']; ?></td>
- <td><?= $valor['titulo']; ?></td>
- <td><?= $valor['autor']; ?></td>
- <td><?= $valor['editorial']; ?></td>               
- <td><?= $valor['categoria']; ?></td>
- <td><?= $valor['disponible'] ? 'Si' : 'No'; ?></td>
+ <td><?= $valor['id']; ?></td>
+ <td><?= $valor['usuario']; ?></td>
+ <td><?= $valor['nombre']; ?></td>
+ <td><?= $valor['apellidos']; ?></td>
+ <td><?= $valor['passwd']; ?></td>
+ <td><?= $valor['email']; ?></td>               
+ <td><?= $valor['perfil']; ?></td>
+ <td><?= $valor['activo'] ? 'Si' : 'No'; ?></td>
  <!-- Se utilizará más adelante para indicar si se quiere modificar o eliminar el registro -->
- <td><a  class="btn btn-primary btn-sm" href="modificar.php?codigo=<?= $valor['codigo'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
- <td><a  class="btn btn-danger btn-sm" return confirm('¿ Desea borrar el libro ?')" href="borrar.php?codigo=<?= $valor['codigo'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+ <td><a  class="btn btn-primary btn-sm" href="modificar.php?id=<?= $valor['id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+ <td><a  class="btn btn-danger btn-sm" return confirm('¿ Desea borrar el usuario ?')" href="borrar.php?id=<?= $valor['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
  </tr>
  <?php endforeach; ?>
  </table>
- <?= "Numero de registros: ".count($libros) ?> <br>
+ <?= "Numero de registros: ".count($usuarios) ?> <br>
  <a  class="btn btn-primary btn-sm" href="../index.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
  </div>
 <?php $this->stopSection(); ?>
