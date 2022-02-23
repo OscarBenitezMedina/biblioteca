@@ -23,13 +23,13 @@
         foreach ($usuarios as $clave => $valor) {
             if ($usuario == $valor['usuario'] &&  md5($passwd) == $valor['passwd']) {
                 if ($valor ['perfil'] == 'bibliotecario') {
-                    $_SESSION ['usuario'] = $valor ['perfil'];
+                    $_SESSION ['perfil'] = $valor ['perfil'];
                     header('Location: ../admin');
                 } else {
-                    $_SESSION ['usuario'] = 'alumno';
-                    echo $_SESSION ['usuario'];
-                    echo ('Es un usuario perroooooo');
-                    header('Location: ../admin');
+                    $_SESSION ['perfil'] = 'alumno';
+                    $_SESSION ['usuario'] = $usuario;
+                    echo $_SESSION ['perfil'];
+                    header('Location: ../users');
                 }
             }  
         }

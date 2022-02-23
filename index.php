@@ -15,8 +15,6 @@
     $sql->execute();
     $libros = $sql->fetchAll();
 
-    
-
     echo $blade->run("index", [
         "libros" => $libros
     ]);

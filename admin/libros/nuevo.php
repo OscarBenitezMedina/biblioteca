@@ -13,18 +13,26 @@ session_start();
 
 // Comprobamos si recibimos datos por POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Recogemos variables
+    $nombre_imagen = $_FILES['imagen']["name"];
+    $dir = "../../img";
+    $tmp_name = $_FILES["imagen"]["tmp_name"];
+    move_uploaded_file($tmp_name, "$dir/$nombre_imagen");
+
     $titulo = isset($_REQUEST['titulo']) ? $_REQUEST['titulo'] : null;
+    $imagen = isset($_REQUEST['imagen']) ? $nombre_imagen : null;
     $autor = isset($_REQUEST['autor']) ? $_REQUEST['autor'] : null;
     $disponible = isset($_REQUEST['disponible']) ? $_REQUEST['disponible'] : null;
     $categoria = isset($_REQUEST['categoria']) ? $_REQUEST['categoria'] : null;
     $editorial = isset($_REQUEST['editorial']) ? $_REQUEST['editorial'] : null;
+
+
     // Prepara INSERT
-    $miInsert = $miPDO->prepare('INSERT INTO libros (titulo, autor, editorial, categoria, disponible) VALUES (:titulo, :autor, :editorial, :categoria, :disponible)');
+    $miInsert = $miPDO->prepare('INSERT INTO libros (titulo, imagen, autor, editorial, categoria, disponible) VALUES (:titulo, :imagen, :autor, :editorial, :categoria, :disponible)');
     // Ejecuta INSERT con los datos
     $miInsert->execute(
         array(
             'titulo' => $titulo,
+            'imagen' => $imagen,
             'autor' => $autor,
             'disponible' => $disponible,
             'categoria' => $categoria,

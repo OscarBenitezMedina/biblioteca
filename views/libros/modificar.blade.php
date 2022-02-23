@@ -7,6 +7,10 @@
         <input class="form-control" id="titulo" type="text" name="titulo">
     </p>
     <p>
+        <label for="imagen">Imagen</label>
+        <input class="form-control" id="imagen" type="text" name="imagen">
+    </p>
+    <p>
         <label for="autor">Autor</label>
         <select name="autor" class="form-select">
                 <option>Seleccione autor</option>

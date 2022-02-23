@@ -11,6 +11,5 @@
  <a class="list-group-item list-group-item-action" href="usuarios/index.php">Usuarios</a>
  </div>
  </div>
-<? // } else { echo ('Esta página solo está disponible para administradores.');} ?>
 <?php $this->stopSection(); ?>
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.plantilla'); } ?>

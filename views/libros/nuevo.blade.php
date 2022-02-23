@@ -2,10 +2,14 @@
 @section('content')
 <h1>Añadir libro</h1>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     <p>
         <label for="titulo">Titulo</label>
         <input class="form-control" id="titulo" type="text" name="titulo">
+    </p>
+    <p>
+        <label for="imagen">Imagen</label>
+        <input class="form-control" id="imagen" type="file" name="imagen">
     </p>
     <p>
         <label for="autor">Autor</label>
