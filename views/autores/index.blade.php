@@ -39,7 +39,7 @@
                     <td><?= $valor['fecha_nacimiento']; ?></td>
                     <td><?= $valor['fecha_fallecimiento']; ?></td>
                     <td><?= $valor['lugar_nacimiento']; ?></td>
-                    <td><?= $valor['biografia']; ?></td>
+                    <td><a class="btn btn-secondary btn-sm" href="<?= $valor['biografia']; ?>"><i class='fas fa-book-open'></i></a></td>
                     <td><?= $valor['foto']; ?></td>
                     <td><a  class="btn btn-primary btn-sm" href="modificar.php?codigo_autor=<?= $valor['codigo_autor'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a  class="btn btn-danger btn-sm" return confirm('¿ Desea borrar el libro ?')" href="borrar.php?codigo_autor=<?= $valor['codigo_autor'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>

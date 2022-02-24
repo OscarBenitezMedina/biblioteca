@@ -19,13 +19,14 @@
 </div>
 <div class="d-flex justify-content-center mt-5">
  <?php foreach ($libros as $libro): ?>
- <div>
- <img src= <?= $libro['imagen']; ?> alt="imagen">
+ <div class="me-5">
+ <img src= "../img/<?= $libro['imagen']; ?>" alt="imagen" width=200 height=300>
  <h4><?= $libro ['libro']; ?></h4>
  <p><?= $libro ['sancion'] ? 'Sí' : 'No' ; ?> hay sanción</p>
  </div>
  <?php endforeach; ?>
-
+ 
 </div>
+<a href= ../index.php><i class= "fa fa-arrow-left" aria-hidden="true"></i></a>
 <?php $this->stopSection(); ?>
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.plantilla'); } ?>

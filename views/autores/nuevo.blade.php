@@ -2,7 +2,7 @@
 @section('content')
         <h1>Añadir autor</h1>
 
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <p>
                 <label for="nombre">Nombre</label>
                 <input class="form-control" id="nombre" type="text" name="nombre">
@@ -29,7 +29,7 @@
             </p>
             <p>
                 <label for="foto">Foto</label>
-                <input class="form-control" id="foto" type="text" name="foto">
+                <input class="form-control" id="foto" type="file" name="foto">
             </p>
             <p>
                 <input class="btn btn-primary btn-sm" type="submit" value="Guardar">

@@ -28,7 +28,7 @@
                 <th>Fecha prevista</th>
                 <th>Fecha devolucion</th>
                 <th>Sanción</th>
-                <th colspan="2">Opciones</th>
+                <th colspan="3">Opciones</th>
             </tr>
             <?php foreach ($prestamos as $clave => $valor): ?>
                 <tr>
@@ -41,6 +41,7 @@
                     <td><?= $valor['sancion'] ? 'Si' : 'No'; ?></td>
                     <td><a  class="btn btn-primary btn-sm" href="modificar.php?id=<?= $valor['id'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a  class="btn btn-danger btn-sm" return confirm('¿ Desea borrar el prestamo ?')" href="borrar.php?id=<?= $valor['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a  class="btn btn-success btn-sm" href="index.php?id=<?= $valor['id'] ?>"><i class="fas fa-book" aria-hidden="true"></i></a></td>
                 </tr>
             <?php endforeach; ?>
         </table>

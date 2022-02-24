@@ -3,25 +3,26 @@
 <h1>Modificar usuario</h1>
 
 <form method="post">
+    <?php foreach ($usuarios as $key => $value){ ?>
     <p>
         <label for="usuario">Nombre de usuario</label>
-        <input class="form-control" id="usuario" type="text" name="usuario">
+        <input class="form-control" id="usuario" type="text" name="usuario" value= "<?= $value['usuario'] ?>">
     </p>
     <p>
         <label for="nombre">Nombre</label>
-        <input class="form-control" id="nombre" type="text" name="nombre">
+        <input class="form-control" id="nombre" type="text" name="nombre" value= "<?= $value['nombre'] ?>">
     </p>
     <p>
         <label for="apellidos">Apellidos</label>
-        <input class="form-control" id="apellidos" type="text" name="apellidos">
+        <input class="form-control" id="apellidos" type="text" name="apellidos" value= "<?= $value['apellidos'] ?>">
     </p>
     <p>
         <label for="passwd">Contraseña</label>
-        <input class="form-control" id="passwd" type="password" name="passwd">
+        <input class="form-control" id="passwd" type="password" name="passwd" value= "<?= $value['passwd'] ?>">
     </p>
     <p>
         <label for="email">Email</label>
-        <input class="form-control" id="email" type="text" name="email">
+        <input class="form-control" id="email" type="text" name="email" value= "<?= $value['email'] ?>">
     </p>
     <p>
         <div class="btn-group col" role="group" aria-label="Basic checkbox toggle button group">
@@ -43,5 +44,6 @@
         <a  class="btn btn-primary btn-sm" href="index.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
         <input class="btn btn-secondary btn-sm" type="submit" value="Modificar">
     </p>
+    <?php } ?>
 </form>
 @endsection

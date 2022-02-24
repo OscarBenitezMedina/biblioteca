@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     );
 }
 
-$usuarios = $miConsulta->fetch();
+$usuarios = $miConsulta->fetchAll();
 echo $blade->run("usuarios.modificar", [
         'id' => $id,
         'usuario' => $usuario,
@@ -60,7 +60,8 @@ echo $blade->run("usuarios.modificar", [
         'psswd' => $passwd_e,
         'email' => $email,
         'perfil' => $perfil,
-        'activo' => $activo
+        'activo' => $activo,
+        'usuarios' => $usuarios
     ]);
 
 ?>

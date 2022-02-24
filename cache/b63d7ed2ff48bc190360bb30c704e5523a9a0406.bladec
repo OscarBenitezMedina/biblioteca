@@ -1,14 +1,14 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection('content'); ?>
 <h1>Modificar libro</h1>
-<form method="post">
+<form method="post" enctype="multipart/form-data" action="">
  <p>
  <label for="titulo">Titulo</label>
  <input class="form-control" id="titulo" type="text" name="titulo">
  </p>
  <p>
  <label for="imagen">Imagen</label>
- <input class="form-control" id="imagen" type="text" name="imagen">
+ <input class="form-control" id="imagen" type="file" name="imagen">
  </p>
  <p>
  <label for="autor">Autor</label>

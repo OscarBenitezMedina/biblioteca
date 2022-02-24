@@ -42,10 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Obtiene un resultado
-$editoriales = $miConsulta->fetch();
+$editoriales = $miConsulta->fetchAll();
 echo $blade->run("editoriales.modificar",
     [
         'codigo_editorial' => $codigo_editorial,
-        'nombre' => $nombre
+        'nombre' => $nombre,
+        'editoriales' => $editoriales
     ]);
 ?>

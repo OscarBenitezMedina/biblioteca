@@ -26,8 +26,12 @@ $foto = isset($_REQUEST['foto']) ? $_REQUEST['foto'] : null;
 
 // Comprobamso si recibimos datos por POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nombre_imagen =$_FILES["foto"]["name"];
+    $dir = "fotos";
+    $tmp_name = $_FILES["foto"]["tmp_name"];
+    move_uploaded_file($tmp_name, "$dir/$nombre_imagen");
     // Prepara UPDATE
-    $miUpdate = $miPDO->prepare('UPDATE autores SET nombre = :nombre, apellidos = :apellidos, fecha_nacimiento = :fecha_nacimiento, fecha_fallecimiento = :fecha_fallecimiento, lugar_nacimiento = :lugar_nacimiento, biografia = :biografia, foto = :foto WHERE codigo_autor = :codigo_autor');
+    $miUpdate = $miPDO->prepare('UPDATE autores SET nombre = :nombre, apellidos = :apellidos, fecha_nacimiento = :fecha_nacimiento, fecha_fallecimiento = :fecha_fallecimiento, lugar_nacimiento = :lugar_nacimiento, biografia = :biografia, foto = :nombre_imagen WHERE codigo_autor = :codigo_autor');
     // Ejecuta UPDATE con los datos
     $miUpdate->execute(
         [
@@ -38,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'fecha_fallecimiento' => $fecha_fallecimiento,
             'lugar_nacimiento' => $lugar_nacimiento,
             'biografia' => $biografia,
-            'foto' => $foto
+            'nombre_imagen' => $nombre_imagen
         ]
     );
     // Redireccionamos a Leer
@@ -53,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]
     );
 }
-
+    
 // Obtiene un resultado
-$autores = $miConsulta->fetch();
+$autores = $miConsulta->fetchAll();
 echo $blade->run("autores.modificar",
     [
         'codigo_autor' => $codigo_autor,
@@ -65,6 +69,6 @@ echo $blade->run("autores.modificar",
         'fecha_fallecimiento' => $fecha_fallecimiento,
         'lugar_nacimiento' => $lugar_nacimiento,
         'biografia' => $biografia,
-        'foto' => $foto
+        'autores' => $autores
     ]);
 ?>

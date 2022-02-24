@@ -43,11 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Obtiene un resultado
-$categorias = $miConsulta->fetch();
+$categorias = $miConsulta->fetchAll();
 
 echo $blade->run("categorias.modificar",
     [
         'codigo_categoria' => $codigo_categoria,
-        'nombre' => $nombre
+        'nombre' => $nombre,
+        'categorias' => $categorias
     ]);
 ?>

@@ -11,7 +11,7 @@
 
     $blade = new BladeOne($views, $cache,BladeOne::MODE_AUTO);
 
-    $sql = $miPDO->prepare('SELECT * FROM libros;');
+    $sql = $miPDO->prepare('SELECT * FROM libros where disponible = 1;');
     $sql->execute();
     $libros = $sql->fetchAll();
 

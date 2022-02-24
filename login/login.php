@@ -29,7 +29,7 @@
                     $_SESSION ['perfil'] = 'alumno';
                     $_SESSION ['usuario'] = $usuario;
                     echo $_SESSION ['perfil'];
-                    header('Location: ../users');
+                    header('Location: ../index.php');
                 }
             }  
         }

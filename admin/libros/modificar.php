@@ -18,15 +18,20 @@ $categoria = isset($_REQUEST['categoria']) ? $_REQUEST['categoria'] : null;
 $editorial = isset($_REQUEST['editorial']) ? $_REQUEST['editorial'] : null;
 $disponible = isset($_REQUEST['disponible']) ? $_REQUEST['disponible'] : null;
 
-// Comprobamso si recibimos datos por POST
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nombre_imagen =$_FILES["imagen"]["name"];
+    $dir = "../../img";
+    $tmp_name = $_FILES["imagen"]["tmp_name"];
+    move_uploaded_file($tmp_name, "$dir/$nombre_imagen");
     // Prepara UPDATE
-    $miUpdate = $miPDO->prepare('UPDATE libros SET titulo = :titulo, autor = :autor, disponible = :disponible, editorial = :editorial, categoria = :categoria WHERE codigo = :codigo');
+    $miUpdate = $miPDO->prepare('UPDATE libros SET titulo = :titulo, imagen = :nombre_imagen, autor = :autor, disponible = :disponible, editorial = :editorial, categoria = :categoria WHERE codigo = :codigo');
     // Ejecuta UPDATE con los datos
     $miUpdate->execute(
         [
             'codigo' => $codigo,
             'titulo' => $titulo,
+            'nombre_imagen' => $nombre_imagen,
             'autor' => $autor,
             'disponible' => $disponible,
             'editorial' => $editorial,
@@ -35,16 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     );
     // Redireccionamos a Leer
     header('Location: index.php');
-} else {
-    // Prepara SELECT
-    $miConsulta = $miPDO->prepare('SELECT * FROM libros WHERE codigo = :codigo;');
-    // Ejecuta consulta
-    $miConsulta->execute(
-        [
-            "codigo" => $codigo
-        ]
-    );
 }
+
 $miConsulta = $miPDO->prepare('SELECT * FROM categorias;');
 $miConsulta->execute();
 $categorias = $miConsulta->fetchAll();
@@ -55,7 +52,7 @@ $miConsulta = $miPDO->prepare('SELECT * FROM editorial;');
 $miConsulta->execute();
 $editoriales = $miConsulta->fetchAll();
 // Obtiene un resultado
-$libros = $miConsulta->fetch();
+$libros = $miConsulta->fetchAll();
 echo $blade->run("libros.modificar", [
         'codigo' => $codigo,
         'titulo' => $titulo,

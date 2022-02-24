@@ -23,21 +23,11 @@
     </p>
     <p>
         <label for="fecha_salida">Fecha de salida</label>
-        <input class="form-control" id="fecha_salida" type="date" name="fecha_salida">
+        <input class="form-control" id="fecha_salida" type="date" name="fecha_salida" value= "<?= date("Y-m-d") ?>">
     </p>
     <p>
         <label for="fecha_prevista">Fecha prevista de devolución</label>
-        <input class="form-control" id="fecha_prevista" type="date" name="fecha_prevista">
-    </p>
-    <p>
-        <label for="fecha_devolucion">Fecha de devolución</label>
-        <input class="form-control" id="fecha_devolucion" type="date" name="fecha_devolucion">
-    </p>
-    <p>
-    <div>Sanción</div>
-
-    <input id="si-sancion" type="radio" name="sancion" value="1" checked> <label for="si-disponible">Si</label>
-    <input id="no-sancion" type="radio" name="sancion" value="0"> <label for="no-disponible">No</label>
+        <input class="form-control" id="fecha_prevista" type="date" name="fecha_prevista" value= "<?= date("Y-m-d") ?>">
     </p>
     <p>
         <input class="btn btn-primary btn-sm" type="submit" value="Guardar">
