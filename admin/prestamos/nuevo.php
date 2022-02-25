@@ -15,7 +15,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Recogemos variables
     $usuario = isset($_REQUEST['id_usuario']) ? $_REQUEST['id_usuario'] : null;
-    $sql = $miPDO->prepare("SELECT count(id_usuario) as numero FROM prestamos where id_usuario = {$_REQUEST['id_usuario']};");
+    $sql = $miPDO->prepare("SELECT count(id_usuario) as numero FROM prestamos where (id_usuario = {$_REQUEST['id_usuario']}) AND (devuelto = 0);");
     $sql->execute();
     $n = $sql->fetchAll();
     foreach ($n as $numero) {
@@ -38,8 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fecha_prevista = isset($_REQUEST['fecha_prevista']) ? $_REQUEST['fecha_prevista'] : null;
         $fecha_devolucion = null;
         $sancion = 0;
+        $devuelto = 0;
 
-        $miInsert = $miPDO->prepare('INSERT INTO prestamos (id_usuario, id_libro, fecha_salida, fecha_prevista, fecha_devolucion, sancion) VALUES (:id_usuario, :id_libro, :fecha_salida, :fecha_prevista, :fecha_devolucion, :sancion)');
+        $miInsert = $miPDO->prepare('INSERT INTO prestamos (id_usuario, id_libro, fecha_salida, fecha_prevista, fecha_devolucion, sancion, devuelto) VALUES (:id_usuario, :id_libro, :fecha_salida, :fecha_prevista, :fecha_devolucion, :sancion, :devuelto)');
 
         $miInsert->execute(
             array(
@@ -48,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 'fecha_salida' => $fecha_salida,
                 'fecha_prevista' => $fecha_prevista,
                 'fecha_devolucion' => $fecha_devolucion,
-                'sancion' => $sancion
+                'sancion' => $sancion,
+                'devuelto' => $devuelto
             )
         );
 
