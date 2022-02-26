@@ -26,7 +26,7 @@
     </p>
     <p>
         <div class="btn-group col" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" name ="perfil" class="btn-check" id="alumno" autocomplete="off" value="alumno">
+            <input type="checkbox" name ="perfil" class="btn-check" id="alumno" autocomplete="off" value="alumno" checked>
             <label class="btn btn-outline-dark border-2" for="alumno">Alumno</label>
 
             <input type="checkbox" name ="perfil" class="btn-check" id="bibliotecario" autocomplete="off" value="bibliotecario">

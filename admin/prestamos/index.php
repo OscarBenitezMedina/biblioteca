@@ -65,13 +65,15 @@
 
         if ($fecha_devolucion > $fecha_prevista) {
             $sancion = 1;
+            $devuelto = 1;
             $activo = 0;
 
-            $miUpdate = $miPDO->prepare("UPDATE prestamos SET sancion = :sancion, fecha_devolucion = :fecha_devolucion WHERE id = :id;");
+            $miUpdate = $miPDO->prepare("UPDATE prestamos SET sancion = :sancion, fecha_devolucion = :fecha_devolucion, devuelto = :devuelto WHERE id = :id;");
             $miUpdate->execute(
                 [
                     'id' => $id,
                     'sancion' => $sancion,
+                    'devuelto' => $devuelto,
                     'fecha_devolucion' => $fecha_devolucion
                 ]
             );
@@ -96,10 +98,12 @@
             );
 
         } else {
-            $miUpdate = $miPDO->prepare("UPDATE prestamos SET fecha_devolucion = :fecha_devolucion WHERE id = :id");
+            $devuelto = 1;
+            $miUpdate = $miPDO->prepare("UPDATE prestamos SET fecha_devolucion = :fecha_devolucion, devuelto = :devuelto WHERE id = :id;");
             $miUpdate->execute(
                 [
                     'id' => $id,
+                    'devuelto' => $devuelto,
                     'fecha_devolucion' => $fecha_devolucion
                 ]
             );

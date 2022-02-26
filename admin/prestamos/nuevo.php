@@ -68,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
     
-    $miConsulta = $miPDO->prepare('SELECT * from libros;');
+    $miConsulta = $miPDO->prepare('SELECT * from libros where disponible = 1;');
     $miConsulta->execute();
     $libros = $miConsulta->fetchAll();
-    $miConsulta = $miPDO->prepare('SELECT * from usuarios;');
+    $miConsulta = $miPDO->prepare('SELECT * from usuarios where activo = 1;');
     $miConsulta->execute();
     $usuarios = $miConsulta->fetchAll();
 

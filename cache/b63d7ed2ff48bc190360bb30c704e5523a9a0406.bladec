@@ -2,9 +2,10 @@
 <?php $this->startSection('content'); ?>
 <h1>Modificar libro</h1>
 <form method="post" enctype="multipart/form-data" action="">
+ <?php foreach ($libros as $key => $value){ ?>
  <p>
  <label for="titulo">Titulo</label>
- <input class="form-control" id="titulo" type="text" name="titulo">
+ <input class="form-control" id="titulo" type="text" name="titulo" value= "<?= $value['titulo'] ?>">
  </p>
  <p>
  <label for="imagen">Imagen</label>
@@ -13,7 +14,7 @@
  <p>
  <label for="autor">Autor</label>
  <select name="autor" class="form-select">
- <option>Seleccione autor</option>
+ <option value= "<?= $value['autor'] ?>">Si no desea cambiar el autor no cambie este campo</option>
  <?php foreach ($autores as $autor){ ?>
  <option value="<?= $autor['codigo_autor']; ?>"> <?= $autor['nombre']; ?></option>
  <?php } ?>
@@ -23,7 +24,7 @@
  <p>
  <label for="categoria">Categoría</label>
  <select name="categoria" class="form-select">
- <option>Seleccione categoría</option>
+ <option value="<?= $value['categoria'] ?>">Si no desea cambiar la categoria no cambie este campo</option>
  <?php foreach ($categorias as $categoria){ ?>
  <option value="<?= $categoria['codigo_categoria']; ?>"> <?= $categoria['nombre']; ?></option>
  <?php } ?>
@@ -32,11 +33,12 @@
  <p>
  <label for="editorial">Editorial</label>
  <select name="editorial" class="form-select">
- <option>Seleccione editorial</option>
+ <option value="<?= $value['editorial'] ?>">Si no desea cambiar la editorial no cambie este campo</option>
  <?php foreach ($editoriales as $editorial){ ?>
  <option value="<?= $editorial['codigo_editorial']; ?>"> <?= $editorial['nombre']; ?></option>
  <?php } ?>
  </select>
+ <?php } ?>
  </p>
  <p>
  <div>¿Disponible?</div>

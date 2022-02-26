@@ -15,7 +15,7 @@
                             FROM prestamos p
                             LEFT JOIN libros ON p.id_libro = libros.codigo 
                             LEFT JOIN usuarios ON p.id_usuario = usuarios.id 
-                            where usuarios.id  = (select id from usuarios where usuario = '{$_SESSION['usuario']}')");
+                            where (usuarios.id  = (select id from usuarios where usuario = '{$_SESSION['usuario']}')) and (p.devuelto = 0)");
         $sql->execute();
         $libros = $sql->fetchAll();
 
@@ -23,7 +23,7 @@
         $sql->execute();
         $datos = $sql->fetchAll();
 
-        echo $blade->run("index_u", [
+        echo $blade->run("users.index_u", [
             'libros' => $libros,
             'datos' => $datos
         ]);

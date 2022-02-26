@@ -1,0 +1,41 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+<h1>Modificar usuario</h1>
+
+<form method="post">
+ <?php foreach ($usuarios as $usuario){ ?>
+ <p>
+ <label for="usuario">Nombre de usuario</label>
+ <input class="form-control" id="usuario" type="text" name="usuario" value= "<?= $usuario['usuario'] ?>">
+ </p>
+ <p>
+ <label for="nombre">Nombre</label>
+ <input class="form-control" id="nombre" type="text" name="nombre" value= "<?= $usuario['nombre'] ?>">
+ </p>
+ <p>
+ <label for="apellidos">Apellidos</label>
+ <input class="form-control" id="apellidos" type="text" name="apellidos" value= "<?= $usuario['apellidos'] ?>">
+ </p>
+ <p>
+ <label for="passwd">Contraseña</label>
+ <input class="form-control" id="passwd" type="password" name="passwd" value= "<?= $usuario['passwd'] ?>">
+ </p>
+ <p>
+ <label for="email">Email</label>
+ <input class="form-control" id="email" type="text" name="email" value= "<?= $usuario['email'] ?>">
+ </p>
+ <p>
+ <div>Activo</div>
+
+ <input id="si-activo" type="radio" name="activo" value="1" checked> <label for="si-activo">Si</label>
+ <input id="no-activo" type="radio" name="activo" value="0"> <label for="no-activo">No</label>
+ </p>
+ <p>
+ <input type="hidden" name="codigo" value="<?= $codigo ?>">
+ <a  class="btn btn-primary btn-sm" href="index.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+ <input class="btn btn-secondary btn-sm" type="submit" value="Modificar">
+ </p>
+ <?php } ?>
+</form>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.plantilla'); } ?>

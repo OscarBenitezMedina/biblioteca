@@ -51,15 +51,23 @@ $autores = $miConsulta->fetchAll();
 $miConsulta = $miPDO->prepare('SELECT * FROM editorial;');
 $miConsulta->execute();
 $editoriales = $miConsulta->fetchAll();
-// Obtiene un resultado
+$miConsulta = $miPDO->prepare('SELECT * FROM libros where codigo = :codigo;');
+$miConsulta->execute(
+    [
+        'codigo' => $codigo
+    ]
+);
 $libros = $miConsulta->fetchAll();
+// Obtiene un resultado
+
 echo $blade->run("libros.modificar", [
         'codigo' => $codigo,
         'titulo' => $titulo,
         'autores' => $autores,
         'categorias' => $categorias,
         'editoriales' => $editoriales,
-        'disponible' => $disponible
+        'disponible' => $disponible,
+        'libros' => $libros
     ]);
 
 ?>

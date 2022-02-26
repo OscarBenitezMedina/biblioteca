@@ -9,5 +9,8 @@
             <a class="list-group-item list-group-item-action" href="prestamos/index.php">Prestamos</a>
             <a class="list-group-item list-group-item-action" href="usuarios/index.php">Usuarios</a>
         </div>
+        <div class="container">
+            <a class="nav-link active" aria-current="page" href="../login/logout.php"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        </div>
     </div>
 @endsection

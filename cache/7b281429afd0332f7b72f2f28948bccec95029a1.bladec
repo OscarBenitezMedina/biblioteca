@@ -10,16 +10,15 @@
  <div class="collapse navbar-collapse" id="navbarSupportedContent">
  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
  <li class="nav-item">
- <a class="nav-link active" aria-current="page" href="login/logout.php">Logout</a>
+ <a class="nav-link active" aria-current="page" href="../login/logout.php">Logout</a>
  </li>
  <li class="nav-item">
- <a class="nav-link active" href="users">Perfil</a>
+ <a class="nav-link active"  href= ../index.php>Biblioteca</a>
  </li>
  <li class="nav-item">
- <a class="nav-link active" href="login/login.php">Login</a>
- </li>
- <li class="nav-item">
- <a class="nav-link active" href="login/signUp.php">Registrarse</a>
+ <?php foreach ($datos as $dato): ?>
+ <a class="nav-link active" href="modificar_u.php?id=<?= $dato['id'] ?>">Modificar perfil</a>
+ <?php endforeach; ?>
  </li>
  </ul>
  </div>

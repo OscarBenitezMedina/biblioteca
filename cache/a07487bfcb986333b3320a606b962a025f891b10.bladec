@@ -6,7 +6,7 @@
  <p>
  <label for="id_usuario">Usuario</label>
  <select name="id_usuario" class="form-select">
- <option>Seleccione usuario</option>
+ <option value="<?= $value['id_usuario']; ?>">Si no desea cambiar el usuario no cambie este campo</option>
  <?php foreach ($usuarios as $usuario){ ?>
  <option value="<?= $usuario['id']; ?>"> <?= $usuario['nombre']; ?></option>
  <?php } ?>
@@ -15,7 +15,7 @@
  <p>
  <label for="id_libro">Libro</label>
  <select name="id_libro" class="form-select">
- <option><?= $value['id_usuario'] ?></option>
+ <option value="<?= $value['id_libro']; ?>">Si no desea cambiar el libro no cambie este campo</option>
  <?php foreach ($libros as $libro){ ?>
  <option value="<?= $libro['codigo']; ?>"> <?= $libro['titulo']; ?></option>
  <?php } ?>
